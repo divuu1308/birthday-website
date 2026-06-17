@@ -1,0 +1,208 @@
+#intro{
+position:fixed;
+inset:0;
+background:radial-gradient(circle at center,#1a0b2e,#000);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+animation:fadeOut 2.8s ease forwards 2.5s;
+perspective:1000px;
+}
+
+.intro-text{
+text-align:center;
+transform:rotateX(20deg) scale(0.9);
+animation:zoomIn 2s ease forwards;
+}
+
+.intro-text h1{
+font-size:28px;
+color:pink;
+text-shadow:0 0 25px pink;
+}
+
+.intro-text p{
+opacity:0.7;
+margin-top:10px;
+}
+
+@keyframes zoomIn{
+0%{transform:rotateX(40deg) scale(0.6);opacity:0;}
+100%{transform:rotateX(0) scale(1);opacity:1;}
+}
+
+@keyframes fadeOut{
+to{opacity:0;visibility:hidden;}
+}
+body{
+margin:0;
+background:
+radial-gradient(circle at top,#2a0f3d,#000),
+radial-gradient(circle at bottom,#12061f,#000);
+color:white;
+font-family:sans-serif;
+overflow-x:hidden;
+
+/* compact feel */
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+.hero{
+width:100%;
+text-align:center;
+padding:10px;
+}
+
+.title{
+font-size:22px;
+text-shadow:0 0 20px pink;
+}
+
+.sub{
+font-size:13px;
+opacity:0.7;
+}
+
+/* media smaller cinematic cards */
+.row{
+display:flex;
+justify-content:center;
+gap:10px;
+padding:10px;
+overflow-x:auto;
+width:100%;
+}
+
+img,video{
+width:120px;
+height:170px;
+object-fit:cover;
+border-radius:12px;
+transition:0.3s;
+transform:perspective(800px) rotateY(0deg);
+}
+
+img:hover,video:hover{
+transform:scale(1.08) rotateY(5deg);
+}
+.letter-container{
+width:100%;
+display:flex;
+justify-content:center;
+padding:20px;
+}
+
+.letter{
+width:88%;
+max-width:380px;
+background:rgba(255,255,255,0.06);
+backdrop-filter:blur(12px);
+border-radius:18px;
+padding:16px;
+text-align:center;
+box-shadow:0 0 30px rgba(255,105,180,0.2);
+transform:translateY(10px);
+animation:floatCard 3s ease-in-out infinite;
+}
+
+@keyframes floatCard{
+0%,100%{transform:translateY(10px);}
+50%{transform:translateY(0);}
+}
+#popup{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.92);
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+/* 🎞 POLAROID FRAME */
+.box{
+width:88%;
+max-width:340px;   /* thoda sa bigger but still compact */
+background:linear-gradient(145deg,#f5f5f5,#eaeaea);
+padding:14px 14px 22px 14px;
+border-radius:10px;
+text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,0.6);
+position:relative;
+
+/* slight tilt cinematic feel */
+transform:rotate(-1deg);
+animation:popIn 0.35s ease;
+}
+
+/* IMAGE / VIDEO INSIDE POLAROID */
+.box img,
+.box video{
+width:100%;
+max-height:60vh;
+object-fit:contain;
+border-radius:6px;
+
+/* inner photo border like polaroid print */
+border:6px solid white;
+box-shadow:0 8px 20px rgba(0,0,0,0.25);
+background:black;
+}
+
+/* CAPTION AREA (polaroid bottom space) */
+#caption{
+margin-top:10px;
+font-size:13px;
+font-family:cursive;
+color:#222;
+padding:5px;
+}
+
+/* CLOSE BUTTON */
+#close{
+position:absolute;
+top:8px;
+right:10px;
+cursor:pointer;
+font-size:18px;
+color:#333;
+}
+
+/* POP ANIMATION */
+@keyframes popIn{
+from{
+transform:scale(0.7) rotate(-3deg);
+opacity:0;
+}
+to{
+transform:scale(1) rotate(-1deg);
+opacity:1;
+}
+}
+#backBtn{
+margin-top:12px;
+padding:10px 18px;
+border:none;
+border-radius:30px;
+background:linear-gradient(135deg,#ff7eb3,#ff4f9a);
+color:white;
+font-size:14px;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 4px 15px rgba(255,105,180,0.4);
+}
+
+#backBtn:hover{
+transform:scale(1.05);
+}
+
+#backBtn:active{
+transform:scale(0.98);
+}
+const bgMusic = document.getElementById("bgMusic");
+
+document.addEventListener("click", () => {
+    bgMusic.play().catch(err => console.log(err));
+}, { once: true });
