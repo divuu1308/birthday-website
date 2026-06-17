@@ -206,3 +206,29 @@ const bgMusic = document.getElementById("bgMusic");
 document.addEventListener("click", () => {
     bgMusic.play().catch(err => console.log(err));
 }, { once: true });
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.screen {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+.menu-grid {
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  width: 100%;
+}
+
+.photo-card, .video-card {
+  width: 95%;
+  margin: auto;
+}
